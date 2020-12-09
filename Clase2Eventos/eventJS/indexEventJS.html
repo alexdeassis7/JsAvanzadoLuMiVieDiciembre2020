@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Event</title>
+    <script>
+        var tiempoAnterior;
+
+        function ejemploJS1(evObject){
+            alert("la funcion de gestion ah recibido el objeto Event con tipo : " + evObject.type );
+            evObject.target.style.color = 'red' ;//cambiamos el color  si se ah produciodo el evento 
+
+            if(tiempoAnterior){
+                alert("Han transcurrido " + (evObject.timeStamp - tiempoAnterior)/ 1000 + 'segundos desde el click anterior');
+               
+            }
+            tiempoAnterior = evObject.timeStamp; 
+        }
+
+        function ejemploJS2(evObject) {
+            alert("Haz Echo doble click ");
+            evObject.target.style.color = 'green';
+            console.log(evObject.target);
+        }
+
+        window.onload = function(){
+            document.getElementById('pulsador1').onclick = ejemploJS1;    
+            document.getElementById('pulsador2').ondblclick = ejemploJS2;    
+        }
+
+    </script>
+</head>
+<body>
+    
+    <div id="cabecera">Ejemplo de JS Event</div>
+
+    <div style="color: blue; margin: 20px; " id="pulsador1">Hace Click aqui</div>
+    <div style="color: blue; " id="pulsador2">Hace doble Click aqui</div>
+</body>
+</html>

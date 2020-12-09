@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delegacion de eventos</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+
+
+
+<div class="gallery-container">
+    <img class="gallery-item" src="images/bk1.jpg">
+    <img class="gallery-item" src="images/bk2.jpg">
+    <img class="gallery-item" src="images/bk3.jpg">
+    <img class="gallery-item" src="images/bk4.jpg">
+    <img class="gallery-item" src="images/bkmotor1.jpg">
+</div>
+
+</body>
+<script>
+
+
+    var gallery = document.querySelector('.gallery-container');
+
+    gallery.addEventListener('click',e =>{
+       console.log("elemento que dispara el evento " + e.target ); 
+       console.log("TYPE" + e.type);
+
+       //console.log(e.target.classlist.remove());
+
+       if(e.target.classList.contains('gallery-item')){
+           e.target.classList.remove('gallery-item')
+       }
+    })
+
+
+</script>
+</html>

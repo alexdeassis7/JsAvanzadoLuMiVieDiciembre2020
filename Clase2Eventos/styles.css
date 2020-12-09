@@ -1,0 +1,14 @@
+#cuadro {
+    width: 400px;
+    height: 250px;
+    border: 1px black solid;
+    float: right;
+    text-align: center;
+    color: red;
+    font-family: arial;
+  }
+  
+  p button{
+      font-size: 1em;
+      font-family: 'Courier New', Courier, monospace;
+  }

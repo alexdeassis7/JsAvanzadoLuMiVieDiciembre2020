@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" onclick="procesarEvento(1)">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUBBLING</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body onclick="procesarEvento(2)">
+    <div onclick="procesarEvento(3)">Presiona click Aqui!</div>
+</body>
+
+<script>
+    function procesarEvento(numero) {
+        console.log(numero);
+    }
+
+
+</script>
+
+</html>

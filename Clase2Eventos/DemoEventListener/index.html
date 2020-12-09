@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener</title>
+</head>
+<body>
+    <button id="miBoton">MI BOTON</button>
+    <!-- <button id="miBoton2">MI BOTON2</button> -->
+
+    <script>
+        var boton = document.getElementById("miBoton");
+        // var boton2 = document.getElementById("miBoton2");
+        var f1 = () =>{ console.log("Ejecute la funcion Uno") };
+        var f2 = () =>{ console.log("Ejecute la funcion Dos") };
+        // de esta manera no podemos registrar dos funciones al mismo Evento , 
+        //como la estamos pisando solo se ejecutara la ultima funcion registrada
+        /*boton.onclick = f1 ;
+        boton.onclick = f2 ;*/
+
+        //con el EventListener SI PODEMOS registrar mas de una function al mismo evento en el mismo Elemento del DOM
+        boton.addEventListener("click" ,function (e){
+            console.log(e.target);
+            console.log("Soy el Primer CallBack Registrado");
+        })
+        boton.addEventListener("click" ,function (event){
+            console.log(event.target);
+            console.log("Soy el Segundo CallBack Registrado");
+        })
+    
+    </script>
+</body>
+</html>
