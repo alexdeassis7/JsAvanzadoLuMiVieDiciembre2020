@@ -1,0 +1,52 @@
+http://puntocomnoesunlenguaje.blogspot.com/2013/07/ejemplos-expresiones-regulares-java-split.html#:~:text=C%2B%2B%20%E2%96%BC-,Ejemplos%20de%20Expresiones%20Regulares%20en%20Java,0%2C%201%20o%20m%C3%A1s%20veces.
+
+1)Comprobar si el String cadena contiene exactamente el patrón (matches) “abc”
+ Pattern pat = Pattern.compile("abc");
+
+2)Comprobar si el String cadena empieza por “abc”
+var reg = /^abc.*/;
+
+3)comprobar si el String cadena empieza por “abc” ó “Abc”
+var reg = /^[aA]bc.*/;
+
+
+4)Comprobar si el String cadena está formado por un mínimo de 5 letras mayúsculas o minúsculas y un máximo de 10.
+
+var reg = /[a-zA-Z]{5,10}/;
+
+8. Comprobar si el String cadena solo contienen los caracteres a ó b puede tener cualquiera de los dos 
+var reg = /(a|b)+/;
+
+
+9) Ejemplo: expresión regular para comprobar si un email es válido
+var reg = /^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/;
+
+La explicación de cada parte de la expresión regular es la siguiente:
+
+[\\w-]+     Inicio del email
+El signo + indica que debe aparecer uno o más de los caracteres entre corchetes:
+\\w indica caracteres de la A a la Z tanto mayúsculas como minúsculas, dígitos del 0 al 9 y el carácter _
+Carácter –
+En lugar de usar \\w podemos escribir el rango de caracteres con lo que esta expresión quedaría así:
+[A-Za-z0-9-_]+
+
+(\\.[\\w-]+)*
+A continuación:
+El * indica que este grupo puede aparecer cero o más veces. El email puede contener de forma opcional  un punto seguido de uno o más de los caracteres entre corchetes.
+@
+A continuación debe contener el carácter @
+[A-Za-z0-9]+
+Después de la @ el email debe contener uno o más de los caracteres que aparecen entre los corchetes
+(\\.[A-Za-z0-9]+)*
+Seguido (opcional, 0 ó más veces) de un punto y 1 ó más de los caracteres entre corchetes
+(\\.[A-Za-z]{2,})
+Seguido de un punto y al menos 2 de los caracteres que aparecen entre corchetes (final del email)
+
+
+
+
+10 ) Por ejemplo, en el siguiente código se comprueba si el usuario ha escrito correctamente una matrícula de automóvil que debe seguir el patrón código del país (1 o 2 letras), un espacio en blanco, 
+
+numeración (4 dígitos), un espacio en blanco y letras (3 letras, empezando en BBB y acabando en ZZZ, sin las vocales):
+
+var expreg = /^[A-Z]{1,2}\s\d{4}\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$/;
