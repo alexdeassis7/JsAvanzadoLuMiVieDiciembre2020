@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validamos User AJAX</title>
+</head>
+<body>
+
+    <form>
+        <input type="text" placeholder="Ingrese aqui su user" id="usuario" onkeyup="validarUsuario()">
+    </form>
+
+
+    <script>
+          var peticiontHTTP;
+        //funcion que nos crea el objeto adecuado 
+        function inicializar_XHR() {
+            if (window.XMLHttpRequest) {
+                //navegador moderno
+                peticiontHTTP = new XMLHttpRequest();
+            } else {
+                //navegador Antiguo
+                peticiontHTTP = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+
+        function realizarPeticion(url, metodo, functionA) {
+            peticiontHTTP.onreadystatechange = functionA;
+            peticiontHTTP.open(metodo , url , true );
+            peticiontHTTP.send(null);
+        }
+
+        function validarUsuario() {
+            var usuario = document.getElementById('usuario').value;
+            console.log("valor ingresado " + usuario);
+
+            //inicializar el objeto HTTP
+            inicializar_XHR();
+            //invocamos a la funcion que realiza el Request
+            realizarPeticion('http://localhost:8080/ValidaFormDB/ValidaUser?user='+usuario , 'GET', funcActuadora);
+
+        }
+
+        function funcActuadora() {
+      
+            if(peticiontHTTP.readyState == 4 )
+            {
+                if(peticiontHTTP.status == 200){
+                    if(peticiontHTTP.responseText){
+                        document.wirte('el nomrbe de usuario ya existe');
+                    }else{
+                        document.wirte('el nomrbe de usuario esta disponible');
+                    }
+
+                }else {
+                    document.write("Algo Salio Mal");
+                }
+            }
+        }
+
+        window.onload = validarUsuario ;
+  
+
+
+
+
+    </script>
+
+</body>
+</html>

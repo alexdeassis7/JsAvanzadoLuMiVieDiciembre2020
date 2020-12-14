@@ -4,53 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repaso Manipulacion de Elemento del DOM</title>
-
-    <script>
-        function capturar() {
-            // Obtenemos el valor por el numero de elemento
-            var porElementos = document.forms["form1"].elements[0].value;
-            
-            //console.log(document.forms["form1"].elements);
-
-            //Obtenemos el valor por el name
-            var porNombre = document.getElementsByName("nombre")[0].value;
-            //console.log(document.getElementsByName("nombre")[0].value);
-
-            //Obtenemos el valor por el tipo de TAG
-            var porTagName = document.getElementsByTagName("input")[0].value;
-
-            //console.log(document.getElementsByTagName("input")[0].value);
-
-            //Obtenemos el valor por el nombre de clase
-            var porClassName = document.getElementsByClassName("formulario")[0].value;   
-
-            //console.log(document.getElementsByClassName("formulario")[0].value);
-
-            document.getElementById("resultado").innerHTML="\
-            Por elementos : " + porElementos +"\
-            <br>Por Nombre : " + porNombre +"\
-            <br>Por TagName : " + porTagName +"\
-            <br>Por ClassName : "+ porClassName +"\
-            ";
-        }
-    </script>
+    <title>Demo RegExp</title>
 </head>
 
 <body>
-    <h1>Obtenemos el valor de un input de varias maneras</h1>
-    <form id="form1">
-        Nombre: <br>
-        <input type="text" name="nombre" value="jose" id="nombre" class="formulario">
-        <p><input type="checkbox" name="acepto"  id="acepto" class="formulario_check">
-            Acepto El Contrato </p>
 
-        <p>De Acuerdo : SI <input type="radio" name="deacuerdo" value="si">
-            NO <input type="radio" name="deacuerdo" value="no">
-        </p>
+    <form>
+         Ingrese aqui el String a validar:<input id="cadena" type="text">
+        <input type="button" onclick="validando()" value="validar"></input>
     </form>
-    <input type="button" value="Obtener el nombre" onclick="capturar()">
-    <div id="resultado"></div>
 
+    <script>
+        // 1)Comprobar si el String cadena contiene exactamente el patrón “abc”
+        //defino mi Reg Exp o mi patron 
+        var expReg = /^abc.*/;
+
+        //2)comprobar si el String cadena empieza por “abc” ó “Abc”
+        var expReg2 = /^[aA]bc.*/
+        //3)Comprobar si el String cadena está formado por un mínimo de 5 letras mayúsculas o minúsculas y un máximo de 10.
+        var expReg3 = /[a-zA-Z]{5,10}/
+        //4)Comprobar si el String cadena solo contienen los caracteres a ó b puede tener cualquiera de los dos 
+        var expReg4 = /(a|b)+/
+        //4)expresión regular para comprobar si un email es válido
+        var expReg5 = /^[\w-]+(\.[\w-]+)*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/;
+        // alexdeassis7@gmail.com.ar
+        //en lugar del //w podemos poner esto  =>>  [A-Za-z0-9-_]+
+
+       // en el siguiente código se comprueba si el usuario ha escrito correctamente una matrícula
+       // de automóvil que debe seguir el patrón código del país (1 o 2 letras), un espacio en blanco, 
+       //numeración (4 dígitos), un espacio en blanco y letras (3 letras, empezando en BBB y acabando en ZZZ, sin las vocales):
+       //var expreg = /^[A-Z]{1,2}\s\d{4}\s([B-D]|[F-H]|[J-N]|[P-T]|[V-Z]){3}$/;
+
+        function validando() {
+            var cadenaAvalidar = document.getElementById("cadena").value;
+            if (expReg5.test(cadenaAvalidar)) {
+                alert("cumple la validacion");
+            } else {
+                alert("No cumple la validacion");
+            }
+        }
+
+
+
+
+
+    </script>
 </body>
+
 </html>
