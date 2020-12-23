@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation API</title>
+</head>
+<body>
+<p>
+  El API de geolocalización de JavaScript permite acceder a la información de 
+  localización geográfica del dispositivo desde el que se visita una web. 
+  Esta información se obtiene de diversas fuentes, por ejemplo, de la dirección IP,
+   de la torre de conexión móvil o de las coordenadas GPS. JavaScript puede acceder
+    así a la latitud y longitud del dispositivo y enviarlas al servidor web dónde 
+    se pueden utilizar con fines muy diversos, la mayoría relacionados con ofrecer
+     recursos personalizados y cercanos al usuario.
+
+  El API de geolocalización es soportado por todos los navegadores principales,
+   incluido IE9+, Firefox 3.5+, Chrome 5.0+ y Safari 5.0+. Si estás interesado 
+   en una alternativa para navegadores y plataformas que no soporten el API de
+    forma nativa, échale un vistazo a geolocation.js en Github.
+
+    Privacidad
+Antes de meternos de lleno en el tema hagamos un alto para atender a la privacidad. 
+Hoy en día se le da mucha importancia a la privacidad del usuario y
+ personalmente aún creo que debería protegerse más y que queda mucho por hacer.
+  En cuánto al Geolocation API, has de saber que es de tipo opt-in, es decir,
+   su uso es completamente opcional y ha de ser aprobado por el usuario.
+   En otras palabras, ningún navegador forzará al usuario a enviar 
+   su geolocalización sin preguntar primero.
+    El navegador ha de lanzar un aviso alertando 
+    sobre una web que quiere acceder a los datos de geolocalización,
+     decir específicamente de que web se trata y dar las opciones de aprobar o rechazar dicho acceso.
+      La aprobación por parte del usuario ha de ser obligatoria para poder usar la localizacion,
+       sin ninguna opción de que la web puede saltársela.
+
+     Además, Chrome, Firefox y WebKit solo aceptan el uso de este API bajo HTTPS.
+</p>
+
+
+
+    <script>
+//https://cybmeta.com/introduccion-a-geolocation-api-de-javascript
+/*¿Cómo se utiliza y que información se puede obtener?
+El API de geolocalización se basa completamente en la propiedad 
+geolocation del objeto global navigator: navigator.geolocation. Este propiedad tiene tres métodos:
+*/
+
+
+var options = {
+        enableHighAccuracy: true,
+        timeout: 6000,
+        maximumAge: 0
+      };
+      
+      navigator.geolocation.getCurrentPosition( success, error, options );
+      
+      function success(position) {
+        var coordenadas = position.coords;
+      
+        console.log('Tu posición actual es:');
+        console.log('Latitud : ' + coordenadas.latitude);
+        console.log('Longitud: ' + coordenadas.longitude);
+       
+      };
+      
+      function error(error) {
+        console.warn('ERROR(' + error.code + '): ' + error.message);
+      };
+
+    </script>
+
+    
+</body>
+</html>

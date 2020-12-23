@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- https://www.digitalocean.com/community/tutorials/js-drag-and-drop-vanilla-js-es -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Practica API Drag & Drop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="example-parent">
+        <div class="example-origin" ondragover="onDragOver(event);" ondrop="onDrop(event);">
+            <!-- utilizamos la propiedad draggable=true para que el elemento sea arrastrable ,
+            el valor predeterminado para el atributo draggable es auto , eso significa
+        que el comportamiento predeterminado del navegador determinara si un elemento se puede arrastrar 
+    , por lo gral la imagenes y enlaces se pueden arrastrar por defecto -->
+            <div draggable="true" id="draggable-0" class="example-draggable" ondragstart="onDragStart(event);">
+                SoyArrastrable</div>
+        </div>
+
+        <div class="example-dropzone" ondragover="onDragOver(event);" ondrop="onDrop(event);">
+            AcaPodesArrastrarUnElemento</div>
+    </div>
+
+    <div class="example-parent">
+        <h1>Lista</h1>
+        <div class="example-origin">
+            TareasPendientes
+            <div id="draggable-1" class="example-draggable" draggable="true" ondragstart="onDragStart(event);">
+                Tarea1
+            </div>
+
+            <div id="draggable-2" class="example-draggable" draggable="true" ondragstart="onDragStart(event);">
+                Tarea2
+            </div>
+
+            <div id="draggable-3" class="example-draggable" draggable="true" ondragstart="onDragStart(event);">
+                Tarea3
+            </div>
+
+            <div id="draggable-4" class="example-draggable" draggable="true" ondragstart="onDragStart(event);">
+                Tarea4
+            </div>
+
+            <div id="draggable-5" class="example-draggable" draggable="true" ondragstart="onDragStart(event);">
+                Tarea5
+            </div>
+        </div>
+
+
+        <div class="example-dropzone" ondragover="onDragOver(event);" ondrop="onDrop(event);">
+            TareasFinalizadas
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
