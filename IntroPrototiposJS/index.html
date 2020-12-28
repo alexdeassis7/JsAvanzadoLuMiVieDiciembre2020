@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduccion a Prototipos</title>
+</head>
+
+<body>
+    <script>
+        /*Una forma de crear prototipos era a traves de funciones constructoras 
+        una funcion tambien es un objeto y tiene un prototipo que es el mismo prototipo 
+        que el de un obejto 
+        
+        Function === Object*/
+
+        function hola() {
+            console.log("Hola Mundo!");
+
+        }
+
+        //ahora miramos el __proto__ y vemos que es el mismo que el de un objeto 
+        console.dir(hola);
+        /*Estonces podemos ademas de ejecutarlas trabajarlas como si fueras un obejto ,
+         osea que puedo definirle nuevas prpiedades por eje : */
+        hola.propiedaUno = 1000
+        console.dir(hola);
+        console.dir(hola.propiedaUno); // muestro el valor de la propiedadUno   
+
+        //La funciones en Js son VARIADICAS
+        hola(1, 2, 3, 4); //esto va a funcionar igual 
+
+        /*VEamos el Scope de una Funcion*/
+        var variableGlobal = 10;
+
+        function miFuncion(parametroLocal) {
+            //esta funcion tiene como ambito variables globales y locales 
+            var variablesLocal = 100;
+            console.log("parametro Local : " + parametroLocal);
+            console.log("Global : " + variableGlobal + "  Local : " + variablesLocal);
+        }
+
+        miFuncion(55);
+
+        function creaFunc() {
+            var nombre = "MozillaFirefox";
+            function muestraNombre() {
+                //alert(nombre);
+            }
+            return muestraNombre
+        }
+
+        var miFunc = creaFunc();
+        miFunc();
+
+        //Hacemos un ejemplo de closure un poco mas interesante 
+
+        function creaSumador(x) {
+            return function (y) {
+                return x + y;
+            };
+        }
+        //suma5 y suma10 ambos son closures , comparten la misma definicion de cuerpo de funcion ,
+        // pero almacenan diferentes entornos , En el entorno suma5 ,x es igual a 5.
+        //en lo que respecta a suma10 ,x es 10
+
+        var suma5 = creaSumador(5);
+        var suma10 = creaSumador(10);
+
+        console.log(suma5(2));  //muestra 7
+        console.log(suma10(2));  //muestra 12
+
+
+        /*Veamos el contexto de una funcion :
+        esto seria una referencia al mismo objeto que contiene a esa funcion y se 
+        accede utilizando la paalabra reservada this , el contexto en JS NOOOO 
+        ES ESTATICO es decir que el this puede ir mutando 
+        ejemplo :*/
+
+        function mifun() {
+            console.log(this); //este this retorna uyna referencia a window
+        }
+        /*imprime el objeto windows , por que todas las variabels y funciones si no le especificamos 
+         a donde van a estar guardadas por defecto tienden a ser propiedades del objeto global
+         window ("window.mifun()") , osea que window es el objeto que contiene a la funcion mifun()*/
+        mifun();
+
+        /*en este caso el objeto que contiene a la funcion saludar es el 
+        obejto persona */
+        var persona = {
+            nombre: "alex",
+            apellido: "de Assis",
+            saludar: function () {
+                console.log(this);
+            }
+        }
+
+        persona.saludar()
+
+        /*Ejemplo de mutacion de contexto , podemos mutar el contexto si usamos las distintas
+        formas de ejecutar un afuncion , en el proto de una funcion tenes -> bind , call , apply , new */
+        function contexto() {
+            console.log(this);
+        }
+
+        contexto(); //normal , window{..}
+        //apply y call nos permiten pasar como parametros el obejto que queremos que 
+        //vaya a la variable this
+        contexto.apply({ propiedadEnviadaX: 100 }); // window{..}
+        contexto.call({ propiedadEnviadaY: 100 }); // window{..}
+
+        contexto();
+    </script>
+</body>
+
+</html>

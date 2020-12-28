@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro a Funciones Constructoras</title>
+</head>
+<body>
+    <script>
+    //    solucionamos el problema de la referencia
+    function crearCliente (name , numeroCliente){
+        var cliente = {
+            nombre : name,
+            id : numeroCliente,
+        }
+        return cliente;
+    }
+    
+    var cliente1 = crearCliente("alex" , 18 );
+    var cliente2 = crearCliente("ariel" , 45 );
+
+    console.log(cliente1);
+    console.log(cliente2);
+    </script>
+    
+</body>
+</html>
