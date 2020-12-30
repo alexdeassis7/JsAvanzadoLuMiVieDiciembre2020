@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- https://lenguajejs.com/javascript/caracteristicas/clases-es6/ -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades Computadas : Getters & Setters</title>
+</head>
+
+<body>
+    <script>
+        /*que es un getter ??
+          es la forma de definir propiedades computadas de lectura de una clase , por ejemplo :
+         */
+        class Animal {
+            constructor(n) {
+                this.nombre = n ;
+            }
+
+            get nombre(){
+                return "Sr. " + this._nombre + ".";
+            }
+
+            set nombre (n){
+                this._nombre =  n.trim(); //hacemos un trim para sacar los posible espacios
+            }
+            hablar(){
+                return "cuak";
+            }
+        }
+
+        //creacion de objetos 
+
+        const pato = new Animal("Donald");
+        console.log(pato.nombre);
+        pato.nombre = "        Fede      ";
+        console.log(pato.nombre); 
+
+
+
+
+    </script>
+</body>
+
+</html>

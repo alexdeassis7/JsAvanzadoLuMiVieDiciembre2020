@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS -POO-Programacion basada en prototipos</title>
+</head>
+<body>
+    <script>
+        //definimos un objeto llamado person , con dos propiedades y una funcion
+        const person = {            
+            name: '',
+            age: 0,
+            presented(){
+                return `Hello my name is ${this.name} and I am ${this.age} years old`
+            }
+        };
+      
+        //invocamos a la funcion presented()
+        console.log(person.presented()); 
+        // modificamos el nombre y la edad del objeto 
+        person.name = 'Yamila Donoso';
+        person.age = 22;
+        //invocamos a la funcion presented()
+        console.log(person.presented());
+
+        function Person(name , age){
+            this.name = name ;
+            this.age =age;
+            this.getName = function(){
+                return this.name;
+            }
+            this.getAge = function(){
+                return this.age;
+            }
+            this.presented = function(){
+                return `Hello my name is ${this.name} and I am ${this.age} years old`
+            }
+        }
+        //creo un objeto person1 
+        const person1 = new Person('Leonardo Baigorria' ,35);
+
+        console.log(person1.presented());
+
+        const person2 = new Person('Mauricio Kim', 22)
+        console.log(person2.presented()); 
+
+        console.log(person1.presented());
+
+        //ejemplo de un Atributo o propiedad privado (EcmaScript5)
+        console.log("***************Ejemplo de un atributo privado en EcmaScript5 ***********");
+
+        function PersonDos(name , age){
+            //defino dos propiedades publicas
+            this.name = name ;
+            this.age = age;
+            
+            //defino una propiedad privada 
+            var privateProperty = 'I am a private property';
+
+            //funcio publica con la cual accedemos a un propiedad privada
+            this.getPrivateProperty = function(){
+                return privateProperty;
+            }
+        }
+
+        const persona3 = new PersonDos('Vanesa Romero', 23 );
+        
+        console.log('name:'+persona3.name);
+        console.log('age:'+persona3.age);
+        // esto nos dara Undefined debido a que la propiedad esta encapsulada
+        console.log(persona3.privateProperty); 
+        console.log(persona3.getPrivateProperty()); 
+
+        persona3.name = '455';
+        console.log('name:'+persona3.name);
+        console.log('age:'+persona3.age);
+        
+
+
+
+
+
+
+
+
+    </script>    
+</body>
+</html>

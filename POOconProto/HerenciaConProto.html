@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia Prototipica JS</title>
+</head>
+<body>
+    <script>
+/*La herencia nos ayuda a modelas los objetos de una mejor manera , cuando 
+aplicamos herencia de una clase a otra , lo que realmente estamos haciendo 
+es que nuestra clase contenga todos los atributos y metodos de la clase padre
+Uno de los limites de JS es que solo PERMITE HERENCIA SIMPLE!*/
+
+//no olvidemos que en JS el modelo es prototipico , por lo que la 
+// herencia tambien va a aser prototipica 
+function Person(name){ //PADRE
+    this.name = name;
+}
+
+function Alumn(name , studying){//HIJO
+    //llamamos al constructor padre , 
+    Person.call(this, name);
+    //Inicializamos las propiedades especificas del Alumn
+    this.studying = studying ;
+    this.presented = function (){
+        return `Hello my name is ${this.name} and I am studying ${this.studying}`;
+    }
+}
+
+//Creamos el objeto Alumno.prototype que hereda desde Person.prototype
+//NOTA : un error comn es utilizar "new Person" para crear Alumn.prototype
+//Esto es incorrecto por varias razones , y no menos importante que no le 
+//estamos pasando nada a Person desde el argunmento "name" . EL lugar correcto para 
+//llamar a Person es Ariba (donde llamamos a Alumn)
+
+Alumn.prototype =  Object.create(Person.prototype);
+
+//Establecer al propiedad "constructor"  para referencia a Alumno
+Alumn.prototype.constructor = Alumn;
+
+var estudiante1 = new Alumn('Alex De Assis' , 'Programacion orientada a objetos');
+console.log(estudiante1.presented());
+console.dir(estudiante1);
+
+
+    </script>
+
+</body>
+</html>

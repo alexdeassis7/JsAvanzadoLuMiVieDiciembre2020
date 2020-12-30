@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambito de clase y metodo</title>
+</head>
+
+<body>
+
+    <script>
+        /*Los ambitos de una clase :
+        Tenemos dos tipos de ambitos :
+        1) ambito de metodo 
+            si declaramos variables o funciones con var , let o const dentro de un  metodo 
+        estos elementos solo existiran en el metodo en cuestio y no seran accesibles
+         desde fuera del metodo 
+
+         2)ambito de clase 
+            Podemos crear propiedades precedidas por "this" (dentro del constructor ) y en ele ES2020
+             desde la parte superiro de la clase , lo que significa que estas porpiedades tendran alcance 
+             en toda la clase , tanto desde el constructor , como desde otros metodos de la clase 
+             OJO estas propiedades tambien se pueden  modificar desde fuera de la clase , simplemente
+             asignandoles otro valor . si quieres evitarlo agrega el # antes de la propiedad 
+             al declararla 
+        */
+
+        class Empelado {
+            //solo se puede definir la propiedad por fuera a partir de ES 2020
+            //esta propiedad tiene ambito de clase 
+            rol = "Arquitecto de Soluciones";
+            constructor() {
+                //esta propieda solo existe dentro del constructor , tiene ambito de metodo
+                const name = "Miguel";
+                //esta propiedad tiene ambito de clase 
+                this.apellido = "Martinez";
+                console.log("constructor name :" + name);
+                //accedo a rol que tiene ambito de clase 
+                console.log("Constructor apellido " + this.apellido);
+            }
+
+            mostrarEmpleado() {
+                //name no se puede acceder desde este metodo 
+                console.log("Nombre : " + name);
+                //accedo a la propieda que tiene ambito de clase 
+                console.log("Apellido : " + this.apellido);
+            }
+        }
+
+        const e1 = new Empelado();
+        //name no se puede acceder desde fuera del metodo constructor
+        console.log("name : " + e1.name);
+        e1.mostrarEmpleado();
+
+        //accedo a rol que tiene ambito de clase
+        console.log("Rol:" + e1.rol);
+
+
+
+
+    </script>
+
+</body>
+
+</html>

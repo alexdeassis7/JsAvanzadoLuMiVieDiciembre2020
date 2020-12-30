@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases ES6 </title>
+</head>
+
+<body>
+    <script>
+        //Declaracion de una clase 
+        class Animal {
+            
+            //Propiedades o atributos : (definene la caracteristicas de una clase)
+            /* variable que existe dentro de un clase , puede ser publica o privada 
+            publico -> propiedad que se puede acceder desde fuera de la clase 
+            privada -> (ES2020) propiedad que no se puede acceder desde fuera de la clase*/
+
+            /*METODO : (define el comportamiento de una clase)
+            es una funcion que existe dentro de una clase y puede ser publica o privada 
+            publico -> metodo que se puede ejecutar desde dentro y desde fuera de la clase 
+            privado -> (ES2020) metodo qu solo se puede ejecutar dentro de la clase 
+            estatico -> metodo que pertenece a la clase y que se ejecuta directamente desde la clase y no 
+                         desde una instancia / objeto
+            Constructor -> metodo que se ejecuta cuando se crea una instancia              
+            */
+
+            //metodo0 constructor , solo se puede tener , y en el caso 
+            //de que no se especifique un constructor a una clase , se tendra uno vacio de forma implicita 
+            //NO SE PUEDE UTILIZAR LA PALABRA Return 
+            constructor(n) {
+                //defino la propiedad nombre (precedido de la palabra clave this)
+                this.nombre = n;                 
+                console.warn("Ha nacido un nuevo Animal!");
+            }
+            //eje metodo publico 
+            hablar(palabra) {
+                return "Cuak" + palabra;
+            }
+            //otro metodo publico 
+            quienSoy() {
+                return "Hola, soy " + this.nombre;
+            }
+            //un metodo statico : solo podremos hacer referencia a elementos que tambien sean
+            //estaticos ! , NOOOpodremos acceder a propiedades o metodos  "no estaticos ",
+            //ya que necesitariamos un objeto para hacerlo
+            static despedirse() {
+                return "Adios Mundo Cruel!";
+            }
+
+
+        } 
+        //Crear o instanciar un objeto 
+        const pato = new Animal("El pato");
+        //utilizamos el metodo hablar()
+        console.log( "pato : " + pato.hablar(" bla bla bla "));
+        console.log("Quien soy ?? " + pato.quienSoy());
+
+        //creamos una segunda instancia de la clase animal 
+        const donald = new Animal("Lucas");
+        console.log("Lucas : " + donald.hablar(" cua cua cua ")); 
+        console.log("Quien soy ?? " + donald.quienSoy()); 
+
+        //ejecutamos el metodo estatico 
+        console.log(Animal.despedirse());
+
+        console.log("Editamos la propiedad publica nombre");
+        pato.nombre = " pato patito" ;
+        donald.nombre = "pato filliot";
+
+        console.log(pato.quienSoy());
+        console.log(donald.quienSoy());
+
+
+      
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propiedades y metodo privado ES2020</title>
+</head>
+<body>
+    <script>
+        /*a partir de la version ES2020  se introduce la posibilidad de crear campos de clase privados 
+        , antiguamente todas las propiedades eran por defectos publicas , pero ahora tambien
+        pueden ser privadas , para ello solo hay que agregar el caracter # justo antes del 
+        nombre de la propiedad o del metodo*/
+
+        class Persona{
+            //como no defino constructor tengo el constructor vacio Implicito 
+
+            //defino una propiedad privada
+            #misecreto = "Me gusta internet Explorer";
+ 
+            //defino un metodo privado 
+            #decirSecreto(){
+                return this.#misecreto;
+            }
+            //defino un metodo publico que imvoca al metodo privado 
+            decirSacrilegio(){
+                return this.#decirSecreto();
+            }
+
+        }
+
+        const jonathan = new Persona();
+        //jonathan.#decirSecreto(); // ERROR!!! ya que el metodo es privado , Private field #decirSecreto .....
+        
+        console.log(jonathan.decirSacrilegio());
+
+    </script>
+</body>
+</html>
