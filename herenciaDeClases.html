@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herencia De Clases</title>
+</head>
+
+<body>
+    <script>
+        //Clase Padre
+        class Forma {
+            constructor() {
+                console.log("Hola soy una forma Geometrica.");
+            }
+
+            metodoDelPadre() {
+                console.log("Soy un metodo implementado en la clase Padre");
+            }
+        }
+
+
+        //Clases Hijas 
+        //a partir del ES2015 podemos nextender clases de forma similar
+        // a como se hace en otros lenguajes como por Java
+        class Cuadrado extends Forma { 
+      
+            constructor (){
+                //el metodo especial super() llama al constructor de la clase padre , por lo 
+                //que si creamos varios objetos , funcionara en cascada , mostrando primero 
+                //el texto del constructor padre y luego el texto del constructor hijo 
+                super();
+                console.log("Soy un Cuadrado ");
+            }
+           calcularSuperficieDelCuadrado(){
+                console.log("la superficie del cuadrado es ......");
+            }
+        }
+
+        class Circulo extends Forma {
+            constructor(){
+                super();
+                console.log("Soy un circulo ");
+            }
+            // calcularRadioDelCirculo(){
+
+            // }
+
+        }
+
+        class Triangulo extends Forma {
+            constructor(){
+                super();
+                console.log("Soy un triangulo");
+
+            }
+
+        }
+
+        const objeto1 = new Cuadrado();
+        objeto1.metodoDelPadre();
+        objeto1.calcularSuperficieDelCuadrado();
+
+        const objeto2 = new Triangulo();
+        objeto2.metodoDelPadre();
+
+        const objeto3 = new Forma();
+        //ESTO DARA ERROR , una clase padre no posee visibilidad sobre caracteristicas y metodos de una clase hija !
+        //objeto3.calcularSuperficieDelCuadrado(); //
+        
+        /* La Palabra Clave Super:
+        esta hace referencia a la superclase , es decir , a la clase padre .
+        Se debe indicar de forma obligatoria en el constructor de la clasehija que extiende de un padre , no obstante ,
+        tambien podremos utilizarlas en metodos para invocar de forma opcional u obligatoria a metodos del padre para que 
+        realicen alguna tarea parcial o complementaria         **/
+
+        class Padre {
+            tarea(){
+                console.log("Tarea deL Padre");
+            }
+        }
+
+        class Hijo extends Padre{
+                //Este metodo "tarea" sobreescribe el metodo "tarea" de la clase padre ,
+                //realizando unicamente el codigo indicado en la clase hija 
+            tarea(){
+                //esto llamara y ejecutara el metodo de la clase padre , y al terminar , continuara 
+                //ejecutando el metodo de la clase hija 
+                super.tarea();
+                console.log("Tarea Del Hijo");                 
+            }
+            // si no se indica "super.tarea()" el metodo tarea() de la clase hija sobreescribira 
+            //al de la clase padre , ocultandolo y ejecutando solo el codigo de la clase hija 
+
+        }
+
+        const h1 = new Hijo();
+        h1.tarea();
+
+    </script>
+</body>
+
+</html>

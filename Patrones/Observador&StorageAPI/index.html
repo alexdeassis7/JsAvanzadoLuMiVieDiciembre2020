@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Obsever</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <p>
+        Este patron se una en varios Frameworks de JS como por ejemplo Angular
+        Como funciona? facil tienes un objeto 1 y un conjunto de otros objetos que quieren
+        saber que pasa con el objeto 1
+
+        Osea tenes un hombre famosos y un grupo de chimosos , en programacion reactiva se usa este patron
+        Para realizar los "Cambios de estados"
+        el patrong poseee dos entidades que las vamos hacer clases
+        veamos un ejemplo :
+    </p>
+
+    <div>
+        <!-- esta caja es el Famoso  (Subject) -->
+        <label>Texto:</label>
+        <textarea style="width: 100%; height: 100px;" id="mitexto"></textarea>
+    </div>
+
+    <!-- Estas cajas son los chismosos (Obzservadores) -->
+    <div class="container nowrap">
+        <!-- Chismoso uno -->
+        <div id="div1" class="box"></div>
+        <!-- Chismoso dos -->
+        <div id="div2" class="box"></div>
+        <!-- Chismoso tres -->
+        <div id="div3" class="box"></div>
+    </div>
+    <script src="app.js"></script>
+    <script src="storage.js"></script>
+</body>
+
+</html>

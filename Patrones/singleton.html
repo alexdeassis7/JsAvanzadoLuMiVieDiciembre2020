@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- https://medium.com/@jesusmurfontanals/singleton-pattern-con-javascript-3eb1c03f184e -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singleton Pattern Implementado en JS</title>
+</head>
+
+<body>
+    <p>
+        Este patro perteneces a la categoria de lo patrones creacionales .
+        La principal Misiopn de este patron es la de crear una sola instancia
+        de una clase y que este disponible para el resto de la alicacion.
+    </p>
+
+    <script>
+        /*Como lo implementamos en JS????
+        Es tan sencillo como que en el constructor de nuestra clase Singleton comprobemos si existe 
+        una instancia de su clase .
+        si la instancia existe la retornamos directamente y si no existe creamos una nueva instancia de la 
+        Clase y la retornamos */
+
+        class Office {
+
+            constructor(nombre, empleados) {
+                this.nombre = nombre;
+                this.empleados = empleados;
+
+                if (typeof Office.instanse === "object") {
+                    return Office.instanse;
+                }
+
+                Office.instanse = this;
+                return this;
+            }
+        }
+
+
+        const office1 = new Office("principal" , 30);
+        console.log(office1);
+
+        const office2 = new Office("secundaria" , 50);
+        console.log(office2); 
+
+        const office3 = new Office("Directivos" , 4);
+        console.log(office2); 
+
+
+    </script>
+
+</body>
+
+</html>

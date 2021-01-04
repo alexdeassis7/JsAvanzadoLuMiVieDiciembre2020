@@ -1,0 +1,22 @@
+.container{
+    width: 90%;
+    height: 140px;
+    padding: 10px auto;
+    background-color: #caa9a9;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+}
+
+.container .nowrap{
+-webkit-flex-wrap: nowrap;
+-ms-flex-wrap: nowrap;
+flex-wrap: nowrap;
+}
+
+.box{
+    background-color: #caa9a9;
+    margin: 10px;
+    width: 100%;
+    border: 2px solid;
+    padding: 6px;;
+}

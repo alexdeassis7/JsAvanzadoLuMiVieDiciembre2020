@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Que es Strict ???</title>
+</head>
+<body>
+    <script>
+        /**/
+
+        //"use strict";
+
+        var miVariable = 1 ;
+
+        function test(){
+            mivariable = 5 ;
+            alert(miVariable);
+        }
+
+        test();
+
+
+        //codigo no estricto 
+        //function IIFE (immediately Invoked Fuction Expression )
+        (function () {
+            "use strict";
+            //codigo estricto 
+            console.log("soy una funcion IIFE");
+        })();
+
+
+         //codigo no estricto 
+
+    </script>
+</body>
+</html>
