@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Storage en HTML 5</title>
+
+
+    <!-- https://blog.logrocket.com/localstorage-javascript-complete-guide/ -->
+</head>
+
+<body>
+    <p> Desde html 5 podemos utilizar el api de storage sin tener que recurrrir a las limitada cookies (4kb)
+    </p>
+
+    <p>
+        dentro de la API tenemos Session y local Storage La api es un conjunto de mecanismos que permiten a los navegadores almacenar pares de clave / valor , y esta creado para ser mas intuitibo que las cookies los pares de clave / valor representan objetos
+        de alamacenamiento , que permanecen intactos durante la carga de la pagina y sinempre son Strings , se puede insertar o acceder a a estos valores mediante metodos
+    </p>
+    <p> diferencia entre local Storage y Session Storage mantienen un area de alamacenamiento separada para cada origen sesion : solo mantiene el area de alamacenamiento mientras el navegador esta abierto (incluso si la pagina se recarga)
+    </p>
+
+    <p>
+        local : continua almcenando datos despues de que se cierrra el navegador el storage se almacena \AppData\Local\Google\Chrome\UserData\Default\LocalStorage en firefox queda guardado en la carpeta de user en un archivo nombrado como webappstore.sqlite
+    </p>
+
+    Metodo utilizados para manipular la data en storage
+    <br>1) setItem() : agregar claves /valores
+    <br> 2)getItem() : para obtener datos del storage
+    <br> 3) removeItem() : para eliminar elemento por clave del storage
+    <br> 4) clear() : para limpiar todo el storage
+    <br>5) Key() : para recuperar una clave de un storage
+
+</body>
+
+<script>
+    //set item  de un string
+    localStorage.setItem('nombre', 'alex');
+
+    //set item de un object 
+    const person = {
+            nombre: "Yamila",
+            ubicacion: "lagos",
+        }
+        //para persistir un object debo comvertirlo a un String
+    localStorage.setItem('usuario', JSON.stringify(person));
+
+
+    //Obtenemos elemento del localStorage
+
+    console.log(localStorage.getItem('usuario'));
+    //para utilizar el valor lo tenemos que comvertir en un object 
+    //para ello utilizo el metodo  JSON.parse()
+    var obj = JSON.parse(localStorage.getItem('usuario'));
+
+    console.dir(obj)
+
+    //elimino si es que existe un item del storage si
+    // no existiera NO HACE NADA!
+    // localStorage.removeItem('nombre');
+
+    //eliminamos todos los elementos del storage
+    //localStorage.clear()
+
+    //Obtengo el nombre de una clave en el storage
+    //localStorage.key(1);
+
+    //Soporte de localStore en el Navegador
+    //para validar si el storage esta disponible en el cliente podemos ejecutar 
+    //la siguiente estructura condicional 
+
+    if (typeof(Storage) !== 'undefined') {
+        //codigo para uso de local Storage
+    } else {
+        //usar otra alternativa por que el cliente no soporta Storage API
+    }
+
+    //LOCAL STORAGE LIMITACIONES
+    /*
+    1 ) no alamacenen informacion confidencial de usuario en local Storage 
+    2) no sustituya a una base de datos del server (back end ) , ya que la info solo se alamacena en el navegador 
+    3) esta limitado a 5MB en lo principales navegadores
+    4) localstorage es bastante inseguro , ya que no tiene ningun tipo de proteccion de datos y se puede acceder mediante cualquier 
+    codigo de tu pagina web 
+    5)localStorage es SINCRONICO! , lo que significa que cada operacion es llamada y ejecutada
+    secuencialmente uan despues de la otra 
+    */
+</script>
+
+</html>
