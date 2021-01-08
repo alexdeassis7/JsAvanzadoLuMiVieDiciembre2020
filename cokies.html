@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cookies</title>
+    <!-- https://medium.com/angular-chile/cookies-con-javascript-9160655d4160 -->
+</head>
+
+<body>
+
+<button id="closeDescarga">boton</button>
+<div id="descargaBanner">
+      
+        <label>Banner:</label>
+        <textarea style="width: 100%; height: 100px;" id="mitexto"></textarea>
+    </div>
+
+    <script>
+
+        let setCookie = (name, value, days) => {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                console.log(date);
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        };
+
+
+
+
+        let getCookie = name => {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(";");
+            for (var i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === " ") c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        };
+
+        //Calling cookie
+
+        const close = document.getElementById("closeDescarga");
+        const downloadBanner = document.getElementById("descargaBanner");
+
+        close.addEventListener("click", function () {
+            setCookie("closedApp", "true", 30);
+            downloadBanner.style.display = "none";
+        });
+
+        const closedApp = getCookie("closedApp");
+
+        if (closedApp === null) {
+            downloadBanner.style.display = "block";
+        } else {
+            downloadBanner.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
