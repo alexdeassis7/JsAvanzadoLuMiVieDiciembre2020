@@ -1,0 +1,30 @@
+herencia https://lenguajejs.com/javascript/caracteristicas/herencia-de-clases/
+use strict https://www.campusmvp.es/recursos/post/El-modo-estricto-de-JavaScript-que-es-y-para-que-sirve.aspx
+
+clase 10 patrones
+singleton https://medium.com/@jesusmurfontanals/singleton-pattern-con-javascript-3eb1c03f184e
+
+
+
+patron modulo revelador!  -> https://www.youtube.com/watch?v=btIHS04UCMs
+
+1) AIP storage https://blog.logrocket.com/localstorage-javascript-complete-guide/
+
+2) coockies , datos que persisten determinado tiempo en nuestro browser , unicamente pueden guardar string igual que el storage API, cada vez 
+documennt.cookie -> asi acedemos a las cookies , no tenemos una api para manipular las cookies
+
+asi escribimos una cookie  -> documennt.cookie = "usuario=Alex"
+asi la leemo  documennt.cookie 
+para ver la cooki vamos a la pestania de application del brwser y buscamos la cookie
+
+a diferencia de api storage podemos configurarlas si queremos que se expire , que se accedan 
+
+para editarla debemos configurar 
+
+cookies : https://medium.com/angular-chile/cookies-con-javascript-9160655d4160
+I:\Pendrive16GB\JSAvanzado Patrones\Clase11
+
+objeto performance -> me muestra con exactitud el tiempo que demora para realizar varias operacioens como por ejemplo la 
+carga del contenido de la pagina (windows.performance)
+
+video analisis zara https://www.youtube.com/watch?v=QbJAf5Oa64Y
